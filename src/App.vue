@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Login msg="Login"/>
+    <Register />
   </div>
 </template>
 
 <script>
-import Login from './components/user/Login.vue'
+import Register from './components/user/Register.vue'
 
 export default {
   name: 'App',
   components: {
-    Login
+    Register,
   }
 }
 </script>
@@ -19,7 +19,7 @@ export default {
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
-  margin-top: 60px;
-  width: 100%;
+  padding:0;
+  margin:0;
 }
 </style>
