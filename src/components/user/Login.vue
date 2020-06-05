@@ -5,7 +5,7 @@
     class="login-form"
     @submit="handleSubmit"
   >
-    <a-form-item>
+    <a-form-item class="form-items">
       <a-input
         v-decorator="[
           'userName',
@@ -41,7 +41,7 @@
         Remember me
       </a-checkbox>
       <a class="login-form-forgot" href="">
-        Forgot password
+        Forgot password?
       </a>
       <a-button type="primary" html-type="submit" class="login-form-button">
         Log in
@@ -75,24 +75,34 @@ export default {
 </script>
 <style scoped>
 
-
+.login-form{
+  margin-top:60px;
+  margin-left:30%;
+  margin-right:30%;
+  border: 1px solid chocolate;
+  border-radius:1.5em;
+}
 #components-form-demo-normal-login .login-form {
   max-width:100%;
   
 }
+
+.form-items{
+  margin-top:10%;
+}
 #components-form-demo-normal-login .login-form-forgot {
   float: right;
+  margin-right:5%;
 }
 #components-form-demo-normal-login .login-form-button {
-  width: 96%;
+  width: 100%;
   background-color: chocolate;
-  margin-left:15%;
-  margin-right:15%;
   text-align: center;
   border:1px solid grey;
   border-radius:10px;
   padding:7px;
   font-size: 1em;
+  height:auto;
 }
 
 </style>

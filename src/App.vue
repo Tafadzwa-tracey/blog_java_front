@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Register msg="Login"/>
+    <Register />
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
-  margin-top: 60px;
-  width: 100%;
+  padding:0;
+  margin:0;
 }
 </style>
