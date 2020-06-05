@@ -1,8 +1,8 @@
 <template>
   <a-form
-    id="components-form-demo-normal-login"
+    id="components-form-demo-normal-register"
     :form="form"
-    class="login-form"
+    class="register-form"
     @submit="handleSubmit"
   >
     <a-form-item>
@@ -28,27 +28,14 @@
         <a-icon slot="prefix" type="lock" style="color: rgba(0,0,0,.25)" />
       </a-input>
     </a-form-item>
+    
     <a-form-item>
-      <a-checkbox
-        v-decorator="[
-          'remember',
-          {
-            valuePropName: 'checked',
-            initialValue: true,
-          },
-        ]"
-      >
-        Remember me
-      </a-checkbox>
-      <a class="login-form-forgot" href="">
-        Forgot password
-      </a>
       <a-button type="primary" html-type="submit" class="login-form-button">
-        Log in
+        Register
       </a-button>
       Or
       <a href="">
-        register now!
+        Login now!
       </a>
     </a-form-item>
   </a-form>
@@ -56,16 +43,27 @@
 </template>
 
 <script>
+
 export default {
   beforeCreate() {
-    this.form = this.$form.createForm(this, { name: 'normal_login' });
+    this.form = this.$form.createForm(this, { name: 'normal_register' });
   },
   methods: {
     handleSubmit(e) {
       e.preventDefault();
+    let config = {
+headers: {
+  "Content-Type": "application/json",
+  'Access-Control-Allow-Origin': '*',
+  }
+}
       this.form.validateFields((err, values) => {
         if (!err) {
+            this.$http.post("http://localhost:8080/user/register",{"me":"test"},config).then(res=>{
+                console.log(res.body);
+            })
           console.log('Received values of form: ', values);
+
         }
       });
     },

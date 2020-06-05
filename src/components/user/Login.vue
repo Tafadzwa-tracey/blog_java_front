@@ -47,7 +47,7 @@
         Log in
       </a-button>
       Or
-      <a href="">
+      <a href="./components/user/Register">
         register now!
       </a>
     </a-form-item>
@@ -56,6 +56,7 @@
 </template>
 
 <script>
+// import Register from "./components/user/Register";
 export default {
   beforeCreate() {
     this.form = this.$form.createForm(this, { name: 'normal_login' });

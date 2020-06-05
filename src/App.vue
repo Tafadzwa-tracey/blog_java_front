@@ -1,16 +1,15 @@
 <template>
   <div id="app">
-    <Login msg="Login"/>
+    <Register msg="Login"/>
   </div>
 </template>
 
 <script>
-import Login from './components/user/Login.vue'
-
+import Register from './components/user/Register.vue'
 export default {
   name: 'App',
   components: {
-    Login
+    Register,
   }
 }
 </script>
