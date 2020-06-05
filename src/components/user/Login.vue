@@ -47,9 +47,9 @@
         Log in
       </a-button>
       Or
-      <a href="./components/user/Register">
+      <router-link to="/">
         register now!
-      </a>
+      </router-link>
     </a-form-item>
   </a-form>
 
@@ -66,6 +66,7 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
+
           console.log('Received values of form: ', values);
         }
       });

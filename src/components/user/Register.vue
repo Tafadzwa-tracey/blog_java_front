@@ -8,7 +8,7 @@
     <a-form-item class="form-items">
       <a-input
         v-decorator="[
-          'userName',
+          'username',
           { rules: [{ required: true, message: 'Please input your username!' }] },
         ]"
         placeholder="Username"
@@ -28,6 +28,7 @@
         <a-icon slot="prefix" type="mail" style="color: rgba(0,0,0,.25)" />
       </a-input>
     </a-form-item>
+     <a-spin v-if="loading" size="large" />
     <a-form-item>
       <a-input
         v-decorator="[
@@ -53,43 +54,50 @@
       >
         Remember me
       </a-checkbox>
-      <a class="login-form-forgot" href="">
-        Forgot password?
-      </a>
-      <a-button type="primary" html-type="submit" class="login-form-button">
+    
+      <a-button  type="primary" html-type="submit" class="login-form-button">
         Sign up
       </a-button>
       Or
-      <a href="">
+      <router-link to="/login">
         Login now!
-      </a>
+      </router-link>
     </a-form-item>
   </a-form>
 
 </template>
 
 <script>
-
 export default {
   beforeCreate() {
+  
     this.form = this.$form.createForm(this, { name: 'normal_register' });
   },
-  methods: {
-    handleSubmit(e) {
-      e.preventDefault();
-    let config = {
-headers: {
-  "Content-Type": "application/json",
-  'Access-Control-Allow-Origin': '*',
-  }
-}
-      this.form.validateFields((err, values) => {
-        if (!err) {
-            this.$http.post("http://localhost:8080/user/register",{"me":"test"},config).then(res=>{
-                console.log(res.body);
-            })
-          console.log('Received values of form: ', values);
+   data: function(){
+return {
+  loading:false
+}},
 
+  methods: {
+    
+    handleSubmit(e) {
+    
+      e.preventDefault();
+      this.form.validateFields( (err, values)  => {
+    
+        if (!err) {
+           this.loading=true;
+          this.$http.post("http://localhost:8080/user/register",values).then(res=>{
+if(res.body.code===1){
+           console.log(res.body);
+           console.log(this.loading);
+           this.$router.push({name: 'home', params: {foo: 1}})
+
+         }
+          }).catch(e=>{
+            console.log(e);
+           }).finally(()=>(this.loading=false));
+         
         }
       });
     },
