@@ -1,21 +1,31 @@
 <template>
   <a-layout id="components-layout-demo-fixed">
-    <a-layout-header :style="{ position: 'fixed', zIndex: 1, width: '100%' }">
+    <a-layout-header :style="{ position: 'fixed', zIndex: 1, width: '100%' }" class="layout-header">
       <div class="logo" />
       <a-menu
         theme="dark"
         mode="horizontal"
-        :default-selected-keys="['2']"
+        :default-selected-keys="['1']"
         :style="{ lineHeight: '64px' }"
       >
-        <a-menu-item key="1">
-          nav 1
+        <a-button icon="search" class = "search-button">
+            Search
+        </a-button>
+         
+        <a-menu-item key="1" >
+          <router-link to="">
+            Language
+          </router-link>
         </a-menu-item>
         <a-menu-item key="2">
-          nav 2
+           <router-link to="/login">
+            Login 
+          </router-link>
         </a-menu-item>
         <a-menu-item key="3">
-          nav 3
+          <router-link to='/register'>
+            Register
+          </router-link>
         </a-menu-item>
       </a-menu>
     </a-layout-header>
@@ -30,11 +40,24 @@
       </div>
     </a-layout-content>
     <a-layout-footer :style="{ textAlign: 'center' }">
-      Ant Design ©2018 Created by Ant UED
+      Comments
     </a-layout-footer>
   </a-layout>
 </template>
+
+<script>
+export default {
+  name: 'App',
+}
+</script>
+
 <style>
+.search-button{
+ text-align: left;
+ border:1px solid grey;
+ width: 50%;
+ margin-right: 2%;
+}
 #components-layout-demo-fixed .logo {
   width: 120px;
   height: 31px;

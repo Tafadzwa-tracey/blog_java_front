@@ -47,7 +47,7 @@
         Log in
       </a-button>
       Or
-      <router-link to="/">
+      <router-link to='/register'>
         register now!
       </router-link>
     </a-form-item>

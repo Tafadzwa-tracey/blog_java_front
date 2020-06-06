@@ -107,14 +107,14 @@ if(res.body.code===1){
 </script>
 <style scoped>
 
-.login-form{
+.register-form{
   margin-top:60px;
   margin-left:30%;
   margin-right:30%;
   border: 1px solid chocolate;
   border-radius:1.5em;
 }
-#components-form-demo-normal-login .login-form {
+#components-form-demo-normal-register .login-form {
   max-width:100%;
   
 }
@@ -122,11 +122,8 @@ if(res.body.code===1){
 .form-items{
   margin-top:10%;
 }
-#components-form-demo-normal-login .login-form-forgot {
-  float: right;
-  margin-right:5%;
-}
-#components-form-demo-normal-login .login-form-button {
+
+#components-form-demo-normal-register .login-form-button {
   width: 100%;
   background-color: chocolate;
   text-align: center;
