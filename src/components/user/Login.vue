@@ -8,7 +8,7 @@
     <a-form-item class="form-items">
       <a-input
         v-decorator="[
-          'userName',
+          'username',
           { rules: [{ required: true, message: 'Please input your username!' }] },
         ]"
         placeholder="Username"
@@ -56,7 +56,6 @@
 </template>
 
 <script>
-// import Register from "./components/user/Register";
 export default {
   beforeCreate() {
     this.form = this.$form.createForm(this, { name: 'normal_login' });
@@ -66,8 +65,18 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
+          this.$http.post("http://localhost:8080/user/login",values).then(res=>{
+            console.log(res.body);
+        
+          if(res.body.code===1){
+           console.log(res.body);
+        
+           this.$router.push({name: 'home', params: {foo: 1}})
 
-          console.log('Received values of form: ', values);
+         }
+          }).catch(e=>{
+            console.log(e);
+           }).finally(()=>(false));
         }
       });
     },
