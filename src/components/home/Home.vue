@@ -5,7 +5,7 @@
       <a-menu
         theme="dark"
         mode="horizontal"
-        :default-selected-keys="['1']"
+        :default-selected-keys="['5']"
         :style="{ lineHeight: '64px' }"
       >
         <a-button icon="search" class = "search-button">
@@ -13,8 +13,8 @@
         </a-button>
          
         <a-menu-item key="1" >
-          <router-link to="">
-            Language
+          <router-link to="/post/post">
+            post something
           </router-link>
         </a-menu-item>
         <a-menu-item key="2">
@@ -30,24 +30,24 @@
       </a-menu>
     </a-layout-header>
     <a-layout-content :style="{ padding: '0 50px', marginTop: '64px' }">
-      <a-breadcrumb :style="{ margin: '16px 0' }">
+      <!-- <a-breadcrumb :style="{ margin: '16px 0' }">
         <a-breadcrumb-item>Home</a-breadcrumb-item>
         <a-breadcrumb-item>List</a-breadcrumb-item>
         <a-breadcrumb-item>App</a-breadcrumb-item>
-      </a-breadcrumb>
-      <div :style="{ background: '#fff', padding: '24px', minHeight: '380px' }">
-        Content
-      </div>
+      </a-breadcrumb> -->
+      <PostList></PostList>
     </a-layout-content>
-    <a-layout-footer :style="{ textAlign: 'center' }">
-      Comments
-    </a-layout-footer>
+  
   </a-layout>
 </template>
 
 <script>
+import PostList from "../post/List";
 export default {
-  name: 'App',
+  name: 'Home',
+  components: {
+    PostList
+  }
 }
 </script>
 

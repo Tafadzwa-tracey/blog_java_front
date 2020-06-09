@@ -68,6 +68,7 @@
 </template>
 
 <script>
+import {baseUrl} from "../../../config";
 export default {
   beforeCreate() {
   
@@ -87,7 +88,7 @@ return {
     
         if (!err) {
            this.loading=true;
-          this.$http.post("http://localhost:8080/user/register",values).then(res=>{
+          this.$http.post(baseUrl+"user/register",values).then(res=>{
 if(res.body.code===1){
            console.log(res.body);
            console.log(this.loading);

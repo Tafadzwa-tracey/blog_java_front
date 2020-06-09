@@ -7,17 +7,20 @@ import VueRouter from 'vue-router';
 import Home from "./components/home/Home";
 import Register from './components/user/Register';
 import Login from './components/user/Login';
+import PostPost from "./components/post/Post";
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
 Vue.config.productionTip = false
-
+const config = require('../config');
+window.config = config;
 Vue.use(Antd);
 const router = new VueRouter({
   routes: [
     {path:"",component:Home,name:"home"},
     {path:'/register',component:Register,name:"register"},
     {path:'/login',component:Login,name:"login"},
+    {path:'/post/post',component:PostPost,name:'postPost'}
   ],
   mode:'history'
 })

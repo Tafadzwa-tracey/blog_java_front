@@ -56,7 +56,9 @@
 </template>
 
 <script>
+import {baseUrl} from "../../../config";
 export default {
+  
   beforeCreate() {
     this.form = this.$form.createForm(this, { name: 'normal_login' });
   },
@@ -65,7 +67,7 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          this.$http.post("http://localhost:8080/user/login",values).then(res=>{
+          this.$http.post(baseUrl+"user/login",values).then(res=>{
             console.log(res.body);
         
           if(res.body.code===1){
