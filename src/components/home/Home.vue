@@ -14,7 +14,7 @@
          
         <a-menu-item key="1" >
           <router-link to="/post/post">
-            post something
+            Post
           </router-link>
         </a-menu-item>
         <a-menu-item key="2">
@@ -27,6 +27,13 @@
             Register
           </router-link>
         </a-menu-item>
+        <a-menu-item key="3">
+         <div>
+          <a-avatar class="avatar">
+            U
+          </a-avatar>
+          </div>
+        </a-menu-item>
       </a-menu>
     </a-layout-header>
     <a-layout-content :style="{ padding: '0 50px', marginTop: '64px' }">
@@ -35,23 +42,42 @@
         <a-breadcrumb-item>List</a-breadcrumb-item>
         <a-breadcrumb-item>App</a-breadcrumb-item>
       </a-breadcrumb> -->
-      <PostList></PostList>
+      <div class="container">
+      <Menu class="menu-bar"></Menu>
+      <PostList class="post-list"></PostList>
+      </div>
     </a-layout-content>
-  
   </a-layout>
 </template>
 
 <script>
 import PostList from "../post/List";
+import Menu from "../user/Menu.vue"
 export default {
   name: 'Home',
   components: {
-    PostList
+    PostList,
+    Menu
   }
 }
 </script>
 
-<style>
+<style scoped>
+.container{
+  display:flex;
+}
+.menu-bar{
+  height: auto;
+  float: left;
+  margin-right:2%;
+}
+.post-list{
+    float: left;
+}
+.avatar{
+    color: #f56a00; 
+    background-color: #fde3cf;
+}
 .search-button{
  text-align: left;
  border:1px solid grey;

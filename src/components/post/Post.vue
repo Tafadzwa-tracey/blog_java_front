@@ -26,8 +26,8 @@
      <a-form-model-item label="Allow Comments" prop="isCommentID">
       <a-switch v-model="form.isComment" />
     </a-form-model-item>
-    <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
-      <a-button type="primary" @click="onSubmit">
+    <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }"  >
+      <a-button type="primary" @click="onSubmit" >
         Post
       </a-button>
     </a-form-model-item>
@@ -99,3 +99,7 @@ this.form.isCommentID=1;
   },
 };
 </script>
+
+<style scoped>
+
+</style>

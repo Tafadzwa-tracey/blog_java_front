@@ -112,7 +112,7 @@ if(res.body.code===1){
   margin-top:60px;
   margin-left:30%;
   margin-right:30%;
-  border: 1px solid chocolate;
+  border: 1px solid rgb(22, 107, 177);;
   border-radius:1.5em;
 }
 #components-form-demo-normal-register .login-form {
@@ -126,7 +126,7 @@ if(res.body.code===1){
 
 #components-form-demo-normal-register .login-form-button {
   width: 100%;
-  background-color: chocolate;
+  background-color: rgb(22, 107, 177);
   text-align: center;
   border:1px solid grey;
   border-radius:10px;
