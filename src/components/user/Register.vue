@@ -41,7 +41,6 @@
         <a-icon slot="prefix" type="lock" style="color: rgba(0,0,0,.25)" />
       </a-input>
     </a-form-item>
-    
     <a-form-item>
       <a-checkbox
         v-decorator="[
@@ -53,6 +52,17 @@
         ]"
       >
         Remember me
+      </a-checkbox>
+       <a-checkbox
+        v-decorator="[
+          'userType',
+          {
+            valuePropName: 'userType',
+            initialValue: false,
+          },
+        ]"
+      >
+        Register as a Writer
       </a-checkbox>
     
       <a-button  type="primary" html-type="submit" class="login-form-button">
@@ -85,11 +95,17 @@ return {
     
       e.preventDefault();
       this.form.validateFields( (err, values)  => {
+        if(values.userType){
+          values.typeID=2;
+        } else {
+          values.typeID=1;
+        }
     
         if (!err) {
            this.loading=true;
           this.$http.post(baseUrl+"user/register",values).then(res=>{
 if(res.body.code===1){
+    this.$root.member = res.body.data;
            console.log(res.body);
            console.log(this.loading);
            this.$router.push({name: 'home', params: {foo: 1}})

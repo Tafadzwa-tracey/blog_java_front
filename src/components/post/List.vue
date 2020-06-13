@@ -1,7 +1,7 @@
 <template>
   <a-list item-layout="vertical" size="large" :pagination="pagination" :data-source="listData">
     <!-- <div slot="footer"><b>ant design vue</b> footer part</div> -->
-    <a-list-item slot="renderItem" key="item.title" slot-scope="item">
+    <a-list-item  v-on:click="toView(item)" slot="renderItem" key="item.title" slot-scope="item">
       <template v-for="{ type, text } in actions" slot="actions">
         <span :key="type">
           <a-icon :type="type" style="margin-right: 8px" />
@@ -52,6 +52,7 @@ export default {
     };
   },
   mounted (){
+    console.log(this.$member);
       this.getData();
   },
   methods: {
@@ -69,6 +70,11 @@ this.$http.post(baseUrl+"post/list",{}).then(res=>{
 
 
 
+
+},
+toView(item){
+  console.log(item);
+    this.$router.push({name: 'postView', params: {value: item}})
 
 }
   }

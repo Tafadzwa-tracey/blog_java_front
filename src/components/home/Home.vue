@@ -13,14 +13,17 @@
         </a-button>
          
         <a-menu-item key="1" >
-          <router-link to="/post/post">
+          <router-link v-if="this.$root.member.id!=null" to="/post/post">
             Post
           </router-link>
         </a-menu-item>
         <a-menu-item key="2">
-           <router-link to="/login">
+           <router-link v-if="this.$root.member.id==null" to="/login">
             Login 
           </router-link>
+          <div v-if="this.$root.member.id!=null"  v-on:click="logout">
+            Logout
+          </div>
         </a-menu-item>
         <a-menu-item key="3">
           <router-link to='/register'>
@@ -43,8 +46,8 @@
         <a-breadcrumb-item>App</a-breadcrumb-item>
       </a-breadcrumb> -->
       <div class="container">
-      <Menu class="menu-bar"></Menu>
-      <PostList class="post-list"></PostList>
+      <Menu v-if="this.$root.member.typeID==2" class="menu-bar"></Menu>
+      <PostList   class="post-list"></PostList>
       </div>
     </a-layout-content>
   </a-layout>
@@ -58,6 +61,11 @@ export default {
   components: {
     PostList,
     Menu
+  },
+  methods:{
+logout(){
+  this.$root.member={};
+}
   }
 }
 </script>

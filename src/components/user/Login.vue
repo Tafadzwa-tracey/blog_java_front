@@ -57,6 +57,7 @@
 
 <script>
 import {baseUrl} from "../../../config";
+
 export default {
   
   beforeCreate() {
@@ -71,9 +72,10 @@ export default {
             console.log(res.body);
         
           if(res.body.code===1){
+          this.$root.member = res.body.data;
+          console.log(this.$member);
            console.log(res.body);
-        
-           this.$router.push({name: 'home', params: {foo: 1}})
+           this.$router.push({name: 'home', params: {member: res.body.data}})
 
          }
           }).catch(e=>{

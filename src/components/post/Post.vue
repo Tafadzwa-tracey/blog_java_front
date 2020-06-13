@@ -47,6 +47,7 @@ export default {
         shotDescription:'',
         content:"",
         isCommentID: 2,
+        userID:""
         
         
       },
@@ -80,6 +81,8 @@ export default {
             if(this.form.isComment){
 this.form.isCommentID=1;
             }
+            this.form.userID=this.$root.member.id
+            
              this.$http.post(baseUrl+"post/save",this.form).then(res=>{
             console.log(res.body);
           if(res.body.code===1){
