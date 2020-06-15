@@ -1,5 +1,6 @@
 <template>
     <!-- <div slot="footer"><b>ant design vue</b> footer part</div> -->
+    <div > 
     <a-list-item   slot="renderItem" key="item.title" slot-scope="item">
       <template v-for="{ type, text } in actions" slot="actions">
         <span :key="type">
@@ -19,9 +20,10 @@
       </a-list-item-meta>
       {{ item.shotDescription }}
     </a-list-item>
+    </div>
 </template>
 <script>
-// import {baseUrl} from "../../../config"
+//import {baseUrl} from "../../../config"
 export default {
 
 
@@ -43,6 +45,6 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 
 </style>

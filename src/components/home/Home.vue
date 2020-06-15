@@ -39,14 +39,14 @@
         </a-menu-item>
       </a-menu>
     </a-layout-header>
-    <a-layout-content :style="{ padding: '0 50px', marginTop: '64px' }">
+    <a-layout-content :style="{ padding: '0 50px', marginTop: '64px',marginLeft:'10%' }">
       <!-- <a-breadcrumb :style="{ margin: '16px 0' }">
         <a-breadcrumb-item>Home</a-breadcrumb-item>
         <a-breadcrumb-item>List</a-breadcrumb-item>
         <a-breadcrumb-item>App</a-breadcrumb-item>
       </a-breadcrumb> -->
       <div class="container">
-      <Menu v-if="this.$root.member.typeID==2" class="menu-bar"></Menu>
+      <Menu class="menu-bar" v-if="this.$root.member.typeID==2" ></Menu>
       <PostList   class="post-list"></PostList>
       </div>
     </a-layout-content>
@@ -55,7 +55,7 @@
 
 <script>
 import PostList from "../post/List";
-import Menu from "../user/Menu.vue"
+import Menu from "../user/Menu.vue";
 export default {
   name: 'Home',
   components: {
@@ -78,6 +78,7 @@ logout(){
   height: auto;
   float: left;
   margin-right:2%;
+  margin-left:-15%;
 }
 .post-list{
     float: left;
