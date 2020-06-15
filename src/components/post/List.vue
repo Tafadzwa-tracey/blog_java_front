@@ -68,14 +68,12 @@ this.$http.post(baseUrl+"post/list",{}).then(res=>{
           }).catch(e=>{
             console.log(e);
            }).finally(()=>(false));
-
-
-
-
 },
+
 toView(item){
   console.log(item);
-    this.$router.push({name: 'postView.item', params: {value: item}})
+    this.$router.push({name: 'postView', params: {value: this.item}})
+   /* this.$router.push({path:'/post/view' ,query:{value:this.item}});*/
 
 }
   }
