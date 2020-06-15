@@ -26,17 +26,7 @@
 <script>
 import {baseUrl} from "../../../config";
 var listData = [];
-// for (let i = 0; i < 50; i++) {
-//   listData.push({
-//     href: 'https://www.antdv.com/',
-//     title: `ant design vue part ${i}`,
-//     avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-//     description:
-//       'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-//     content:
-//       'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-//   });
-// }
+
 
 export default {
 
@@ -71,8 +61,7 @@ this.$http.post(baseUrl+"post/list",{}).then(res=>{
 },
 
 toView(item){
-  console.log(item);
-    this.$router.push({name: 'postView', params: {value: this.item}})
+  this.$router.push({name: 'postView', params: {value: item}})
    /* this.$router.push({path:'/post/view' ,query:{value:this.item}});*/
 
 }
