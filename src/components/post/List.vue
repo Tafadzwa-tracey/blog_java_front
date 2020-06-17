@@ -1,26 +1,45 @@
-<template>
+<template  >
  
-  <a-list item-layout="vertical" size="large" :pagination="pagination" :data-source="listData">
-    <!-- <div slot="footer"><b>ant design vue</b> footer part</div> -->
-      <a-list-item v-on:click="toView(item)" slot="renderItem" key="item.title" slot-scope="item">
-      <template v-for="{ type, text } in actions" slot="actions">
-        <span :key="type">
-          <a-icon :type="type" style="margin-right: 8px" />
-          {{ text }}
-        </span>
-      </template>
+  <a-list  item-layout="vertical" size="small" :pagination="pagination" :data-source="listData">
+      <a-list-item class="post" v-on:click="toView(item)" slot="renderItem" key="item.title" slot-scope="item">
+       <div class="post-top">
+         <a-avatar  :src="'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'" />
+        <a  :href="item.href">{{ item.title }}</a><br/>
+       </div>
       <img
-        slot="extra"
-        width="200"
+        height="600"
+        width="800"
         alt="logo"
         src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-      />
-      <a-list-item-meta :description="item.description">
-        <a slot="title" :href="item.href">{{ item.title }}</a>
-        <a-avatar slot="avatar" :src="item.avatar" />
-      </a-list-item-meta>
-      {{ item.shotDescription }}
+      /><br/>
+      <h3 class="post-description">{{ item.shotDescription }} </h3>
+       
+      <br/>
+      <template>
+  <div>
+    <div>
+      <a-tag v-for="tag in item.tags" :key="tag.id" color="pink">
+        {{tag.name}}
+      </a-tag>
+    </div>
+  </div>
+</template>
+        <template>
+        <span :key="type" style="margin-right: 8px">
+          <a-icon :type="'read'" style="margin-right: 5px" />
+          {{ 1 }}
+        </span>
+        <span :key="type" style="margin-right: 8px">
+          <a-icon :type="'like-o'" style="margin-right: 5px" />
+          {{ 1 }}
+        </span>
+         <span :key="type" style="margin-right: 8px">
+          <a-icon :type="'message'" style="margin-right: 5px" />
+          {{ item.commentsCount }}
+        </span>
+      </template>
     </a-list-item>
+  
   </a-list>
 </template>
 <script>
@@ -36,7 +55,7 @@ export default {
     return {
       listData,
       actions: [
-        { type: 'star-o', text: '156' },
+        { type: 'read', text: '156' },
         { type: 'like-o', text: '156' },
         { type: 'message', text: '2' },
       ],
@@ -69,5 +88,23 @@ toView(item){
 };
 </script>
 <style>
-
+.post{
+  width: 1000px;
+  text-align: center;
+  padding-left:20px ;
+  align-content: center;
+  margin: auto;
+  padding-right:20px;
+  background-color: white;
+}
+.post-top {
+  position: relative;
+  margin-left: 0px;
+}
+.post-description{
+  text-align: center;
+  max-width: 400px;
+  margin: auto;
+  align-self: center;
+}
 </style>

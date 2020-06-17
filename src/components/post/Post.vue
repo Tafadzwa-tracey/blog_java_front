@@ -23,6 +23,12 @@
     <a-form-model-item label="Content" prop="content">
       <a-input v-model="form.content" type="textarea" />
     </a-form-model-item>
+     <a-form-model-item label="Category" prop="category">
+      <CategoryPick @onSave="save" v-model="form.categoryID"></CategoryPick>
+    </a-form-model-item>
+     <a-form-model-item label="Tags" prop="category">
+      <TagPick @onSave="saveTag" v-model="form.tagIDs"></TagPick>
+    </a-form-model-item>
      <a-form-model-item label="Allow Comments" prop="isCommentID">
       <a-switch v-model="form.isComment" />
     </a-form-model-item>
@@ -35,14 +41,22 @@
 </template>
 <script>
 import {baseUrl} from "../../../config";
+import CategoryPick from "../category/Pick";
+import TagPick from "../tag/Pick";
 export default {
+  components:{
+CategoryPick,
+TagPick,
+},
   data() {
     return {
       labelCol: { span: 4 },
       wrapperCol: { span: 14 },
       other: '',
       form: {
+        tagIDs:"",
         title: '',
+        categoryID:"",
         isComment: true,
         shotDescription:'',
         content:"",
@@ -74,6 +88,17 @@ export default {
     };
   },
   methods: {
+    saveTag(value){
+      console.log(value);
+      this.form.tagIDs=value;
+
+    },
+    save(value){
+console.log("****************got some value*******");
+this.form.categoryID=value;
+console.log(value);
+console.log("****************got some value*******");
+    },
     onSubmit() {
       this.$refs.ruleForm.validate(valid=> {
          console.log(this.form);
@@ -81,12 +106,17 @@ export default {
             if(this.form.isComment){
 this.form.isCommentID=1;
             }
+            if(this.form.tagIDs.length>0){
+this.form.tagIDs=this.form.tagIDs.toString();
+            } else {
+              this.form.tagIDs="";
+            }
             this.form.userID=this.$root.member.id
             
              this.$http.post(baseUrl+"post/save",this.form).then(res=>{
             console.log(res.body);
           if(res.body.code===1){
-           this.$router.push({name: 'home', params: {foo: 1}})
+          // this.$router.push({name: 'home', params: {foo: 1}})
 
          }
           }).catch(e=>{

@@ -25,7 +25,7 @@
       {{ item.content }}
     </a-list-item>
   </a-list>
-  <CommentList :comments="this.item.comments"></CommentList>
+  <CommentList v-if="this.item.comments.length!=0" :comments="this.item.comments"></CommentList>
   <CommentPost v-if="this.$root.member.id!=null" :post="this.item"></CommentPost>
     </div>
 </template>
@@ -55,6 +55,7 @@ components: {
   created(){
    this.item = this.$route.params.value;
   this. myData=[this.item];
+  console.log(this.item);
   
   },
 

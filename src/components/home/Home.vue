@@ -13,7 +13,7 @@
         </a-button>
          
         <a-menu-item key="1" >
-          <router-link v-if="this.$root.member.id!=null" to="/post/post">
+          <router-link v-if="this.$root.member.typeID==2" to="/post/post">
             Post
           </router-link>
         </a-menu-item>
@@ -47,20 +47,26 @@
       </a-breadcrumb> -->
       <div class="container">
       <Menu class="menu-bar" v-if="this.$root.member.typeID==2" ></Menu>
+       <ReaderMenu class="menu-bar" v-if="this.$root.member.typeID!=2" ></ReaderMenu>
       <PostList   class="post-list"></PostList>
       </div>
+       <div class="footer" slot="footer"><b>ant design vue</b> footer part</div>
     </a-layout-content>
+
   </a-layout>
+  
 </template>
 
 <script>
 import PostList from "../post/List";
 import Menu from "../user/Menu.vue";
+import ReaderMenu from "../user/ReaderMenu";
 export default {
   name: 'Home',
   components: {
     PostList,
-    Menu
+    Menu,
+    ReaderMenu,
   },
   methods:{
 logout(){
@@ -75,9 +81,9 @@ logout(){
   display:flex;
 }
 .menu-bar{
-  height: auto;
+  height:au;
   float: left;
-  margin-right:2%;
+  /* margin-right:2%; */
   margin-left:-15%;
 }
 .post-list{
@@ -92,6 +98,9 @@ logout(){
  border:1px solid grey;
  width: 50%;
  margin-right: 2%;
+}
+.footer{
+  background-color: black;
 }
 #components-layout-demo-fixed .logo {
   width: 120px;
